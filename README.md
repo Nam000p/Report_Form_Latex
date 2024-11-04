@@ -1,1 +1,1 @@
-# Latex
+Đây là mẫu báo cáo đồ án/bài tập mình làm trên TeXstudio dựa trên một template có sẵn trên Overleaf dành cho các bạn muốn làm offline. Lưu ý các bạn cần tải vài gói thư viện bằng MiKTeX để debug trên TeXstudio.
