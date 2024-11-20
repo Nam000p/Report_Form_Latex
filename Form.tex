@@ -102,7 +102,9 @@
 
 %------------SECTION 1--------------------------------------------
 	\section{Section}
+	
 	\subsection{Một số lưu ý}
+	
 	\subsubsection{Cài đặt offline}
 	Template này yêu cầu cài đặt một số gói (package) nâng cao cho TexStudio:
 	\begin{itemize}
@@ -110,12 +112,29 @@
 		\item Để nhúng (chèn) code: \texttt{listings}
 	\end{itemize}
 	Các gói này được cài đặt thông qua lệnh
+	\begin{lstlisting}[language=sh]
+		sudo apt-get install texlive-full
+	\end{lstlisting}
 	Tuy nhiên kích thước gói đâu đó vào khoảng 5GB (!). Vì vậy tốt nhất nên xài Overleaf.
+	
+	\subsubsection{Sử dụng font khác}
+	Tham khảo font typefaces tại \href{https://www.overleaf.com/learn/latex/Font_typefaces}{link này}.
+	
+	\subsubsection{Đánh số chỉ mục bằng chữ số La Mã}
 	Mở file \texttt{main.tex} và bỏ comment dòng 
+	\begin{lstlisting}[language=tex]
+		% \renewcommand{\thesection}{\Roman{section}}
+		% \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}  
+	\end{lstlisting}
+	
 	\subsection{Ví dụ}
 	Ngày xửa ngày xưa, ở vương quốc VNUHCM - US, có một chàng hoàng tử ngồi cắm đầu viết doc\footnote{Đây là footnote, chú thích lại những gì cần chú ý.}.\\
 	Mặc định muốn xuống dòng chỉ cần dùng $\backslash\backslash$  (2 lần dấu xẹt huyền).\\
 	Nếu bạn muốn thụt đầu dòng khi bắt đầu paragraph mới, vào \texttt{main.tex} và disble dòng
+	\begin{lstlisting}[language=tex]
+		\setlength{\parindent}{0pt}
+	\end{lstlisting}
+
 	\subsection{First subsection}
 	\subsubsection{First sub-subsection}
 	Subsection để ví dụ thôi. Thêm vài ví dụ:
@@ -129,27 +148,29 @@
 		\item Vẫn là enumerate
 	\end{enumerate}
 	Nhỏ hơn subsubsection thì xài \texttt{paragraph}:
+	
 	\paragraph{Đây là ví dụ cho paragraph}
 	Lưu ý là paragraph không nằm trong Mục lục.
+	
 	\subsection{Chia nhỏ nội dung}
 	Bạn có thể chia nhỏ nội dung của báo cáo thành các file \texttt{.tex} và dùng lệnh \texttt{input} để chèn vào báo cáo chính. Ví dụ có trong file \texttt{main.tex}.
 %-------------------------------------------------------------------------------------
 
 %----------------------SECTION 2------------------------------------------------------
 	\section{Hình ảnh}
-	Hình ảnh được thể hiện như hình~\ref{fig:my_label}, lưu ý flag \texttt{[H]} để disable floating (hình được hiển thị đúng vị trí, không trôi lên đầu trang).
+	Hình ảnh được thể hiện như hình~\ref{fig:oip}, lưu ý flag \texttt{[H]} để disable floating (hình được hiển thị đúng vị trí, không trôi lên đầu trang).
 	\begin{figure}%[h]
 		\centering
 		\includegraphics[scale=.4]{D:/Download/OIP}
 		\caption{Hình ví dụ (logo HCMUS - updated 30/11/2022)}
 		\label{fig:oip}
 	\end{figure}
-	Hình~\ref{fig:my_label_with_H} cũng là hình ví dụ nhưng có tag \texttt{[H]}. Lưu ý là có tag \texttt{[H]} thì code ở đâu hình sẽ nằm ở đó, không quan trọng nội dung ít hay nhiều (trang giấy sẽ thừa 1 khúc như bạn thấy). Để hiểu hơn về positioning trong LaTeX, xin tham khảo.
+	Hình~\ref{fig:oip_with_h} cũng là hình ví dụ nhưng có tag \texttt{[H]}. Lưu ý là có tag \texttt{[H]} thì code ở đâu hình sẽ nằm ở đó, không quan trọng nội dung ít hay nhiều (trang giấy sẽ thừa 1 khúc như bạn thấy). Để hiểu hơn về positioning trong LaTeX, xin tham khảo.
 	\begin{figure}[h]
 		\centering
 		\includegraphics[scale=.4]{D:/Download/OIP}
 		\caption{Hình ví dụ (logo HCMUS - updated 30/11/2022)}
-		\label{fig:oip}
+		\label{fig:oip_with_h}
 	\end{figure}
 %--------------------------------------------------------------------------------
 
@@ -197,7 +218,7 @@ Siêu việt hơn, gõ hệ phương trình thì nên dùng tag \texttt{equation
 		c_1x_1 + c_2x_2 + .. + c_nx_n &= w \\
 	\end{aligned}
 \end{equation*}
-Tham khảo cách gõ equation trên nhé!
+Tham khảo cách gõ equation trên \href{https://www.overleaf.com/learn/latex/Mathematical_expressions}{Overleaf} nhé!
 %----------------------------------------------------------------------
 
 %-------------------SECTION 5------------------------------------------
@@ -211,15 +232,32 @@ Ngôn ngữ mặc định của template là Tiếng Việt, config ở file \te
 	\item Chuyển xang xài package \texttt{babel} và xài tag \texttt{$\backslash$uselanguage}.
 	\item Bỏ xài package \texttt{vietnam}
 \end{itemize}
-Hướng dẫn thì mời bạn xem 
+Hướng dẫn thì mời bạn xem \href{https://www.overleaf.com/learn/latex/International_language_support#Babel}{link này}
 %---------------------------------------------------------------------
 
 %------------------------SECTION 6------------------------------------
+\section{Code}
+Dùng gói \texttt{listings} để gõ code, ví dụ cho C++:
+\begin{lstlisting}[language=C++]
+#include <iostream>
+int main(){
+	std::cout << "Hello World!"\n;
+	return 0;
+}
+\end{lstlisting}
+
+Cho Python:
+\begin{lstlisting}[label=Python]
+	print("Hello World!")
+\end{lstlisting}
+
+%---------------------------------------------------------------------
+%------------------------SECTION 7------------------------------------
 \section{Sử dụng tài liệu tham khảo}
 
 File BibTeX tài liệu tham khảo nằm ở đường dẫn \texttt{ref/ref.bib}. Sửa tên file \texttt{.bib} sẽ phải sửa lại nội dung file \texttt{ref.tex}.
 
-Đây là ví dụ cite một tài liệu\cite{greenwade93}.
+Đây là ví dụ cite một tài liệu\cite{texbook}\cite{lamport94}.
 
 %---------------------------------------------------------------------
 
@@ -228,14 +266,12 @@ File BibTeX tài liệu tham khảo nằm ở đường dẫn \texttt{ref/ref.bi
 \phantomsection
 \addcontentsline{toc}{section}{Tài liệu}
 \bibliographystyle{plain}
-\bibliography{ref/ref}
+\begin{thebibliography}{9}
+	\bibitem{texbook}
+	Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
+	
+	\bibitem{lamport94}
+	Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
+	Wesley, Massachusetts, 2nd ed.
+\end{thebibliography}
 \end{document}
-@article{greenwade93,
-	author  = "George D. Greenwade",
-	title   = "The {C}omprehensive {T}ex {A}rchive {N}etwork ({CTAN})",
-	year    = "1993",
-	journal = "TUGBoat",
-	volume  = "14",
-	number  = "3",
-	pages   = "342--351"
-}
